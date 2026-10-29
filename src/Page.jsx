@@ -17,11 +17,11 @@ const API = 'https://fakestoreapi.com';
 const ALL = 'all';
 
 /**
- * Catalog page — host should pass { token, userId, username }.
+ * Catalog page — host should pass { token, customerId, username }.
  * Fetches GET /products. Does not own routing or login.
  * UI + cart state come from the host via `host/ui`.
  */
-export function Page({ token, userId, username }) {
+export function Page({ token, customerId, username }) {
     const [products, setProducts] = useState([]);
     const [status, setStatus] = useState('loading');
     const [error, setError] = useState('');
@@ -83,7 +83,7 @@ export function Page({ token, userId, username }) {
                 title="Catalog"
                 subtitle={
                     (username
-                        ? `Browsing as ${username} (user #${userId ?? '—'})`
+                        ? `Browsing as ${username} (user #${customerId ?? '—'})`
                         : 'Product list from Fake Store') +
                     (token ? '' : ' · no token passed yet')
                 }
